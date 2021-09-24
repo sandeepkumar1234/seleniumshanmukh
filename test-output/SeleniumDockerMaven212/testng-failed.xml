@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [SeleniumDockerMaven212]" guice-stage="DEVELOPMENT" verbose="2">
+  <listeners>
+    <listener class-name="org.wtt.docker.listener.ExecutionListener"/>
+  </listeners>
+  <test name="SeleniumDocker(failed)">
+    <classes>
+      <class name="org.wtt.test.SeleniumDocker">
+        <methods>
+          <include name="setUp"/>
+          <include name="testCheckBox"/>
+          <include name="simpleTest"/>
+          <include name="afterTest"/>
+          <include name="setupBeforeSuite"/>
+        </methods>
+      </class> <!-- org.wtt.test.SeleniumDocker -->
+      <class name="org.wtt.test.SampleConnectGrid">
+        <methods>
+          <include name="f"/>
+        </methods>
+      </class> <!-- org.wtt.test.SampleConnectGrid -->
+    </classes>
+  </test> <!-- SeleniumDocker(failed) -->
+</suite> <!-- Failed suite [SeleniumDockerMaven212] -->
