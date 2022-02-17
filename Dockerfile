@@ -18,8 +18,6 @@ COPY src/test/resources/application.properties src/test/resources/application.pr
 # MODULE  = order-module / search-module
 # GRIDHOST = selenium hub hostname / ipaddress
 
-RUN mkdir D:\\seleniumdockerreports
-
 ENTRYPOINT java -cp seleniumdocker.jar:seleniumdocker-tests.jar:libs/* -DseleniumHubHost=selenium-hub -Dbrowser=chrome org.testng.TestNG testng.xml
 
 CMD cp -R /test-output/emailable-report.html D:\\seleniumdockerreports
