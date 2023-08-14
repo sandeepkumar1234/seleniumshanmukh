@@ -1,7 +1,7 @@
 FROM maven:3.8.6-jdk-8 AS build
 COPY . /usr/src/app
 COPY pom.xml /usr/src/app
-RUN mvn  -f /usr/src/app/pom.xml clean package -Dmaven.test.skip=true
+RUN mvn  -f /usr/src/app/pom.xml  clean install -DskipTests=true
 
 FROM openjdk:8-jre-slim 
 
