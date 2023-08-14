@@ -10,15 +10,17 @@ FROM openjdk:8-jre-slim
 WORKDIR /usr/share/tag
 
 COPY --from=build /usr/src/app/.  /usr/share/tag/
-
+ADD  --from=build /usr/src/app/target/seleniumdocker.jar seleniumdocker.jar
+ADD  --from=build /usr/src/app/target/seleniumdocker-tests.jar seleniumdocker-tests.jar
+ADD  --from=build /usr/src/app/target/libs libs
 # Add the project jar & copy dependencies
-ADD  /usr/src/apptarget/seleniumdocker.jar seleniumdocker.jar
-ADD  /usr/src/apptarget/seleniumdocker-tests.jar seleniumdocker-tests.jar
-ADD  /usr/src/apptarget/libs libs
+# ADD  target/seleniumdocker.jar seleniumdocker.jar
+# ADD  target/seleniumdocker-tests.jar seleniumdocker-tests.jar
+# ADD  target/libs libs
 # Add the suite xmls
 ADD testng.xml testng.xml
 
-COPY /usr/src/appsrc/test/resources/application.properties src/test/resources/application.properties
+COPY  src/test/resources/application.properties src/test/resources/application.properties
 
 #ADD  application.properties
 # Command line to execute the test
