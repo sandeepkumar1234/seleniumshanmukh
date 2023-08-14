@@ -16,7 +16,7 @@ WORKDIR /usr/share/tag
 COPY --from=build /usr/src/app/target/seleniumdocker.jar seleniumdocker.jar
 # COPY --from=build /usr/src/app/target/seleniumdocker-tests.jar seleniumdocker-tests.jar
 # COPY --from=build /usr/src/app/target/libs libs
-COPY /usr/src/app/target/ .
+COPY --from=build /usr/src/app/target/ .
 # Add the project jar & copy dependencies
 # ADD  target/seleniumdocker.jar seleniumdocker.jar
 # ADD  target/seleniumdocker-tests.jar seleniumdocker-tests.jar
