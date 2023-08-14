@@ -10,9 +10,9 @@ FROM openjdk:8-jre-slim
 WORKDIR /usr/share/tag
 
 COPY --from=build /usr/src/app/.  /usr/share/tag/
-ADD  --from=build /usr/src/app/target/seleniumdocker.jar seleniumdocker.jar
-ADD  --from=build /usr/src/app/target/seleniumdocker-tests.jar seleniumdocker-tests.jar
-ADD  --from=build /usr/src/app/target/libs libs
+ADD    /usr/share/tag/target/seleniumdocker.jar seleniumdocker.jar
+ADD  /usr/share/tag/target/seleniumdocker-tests.jar seleniumdocker-tests.jar
+ADD  /usr/share/tag/target/libs libs
 # Add the project jar & copy dependencies
 # ADD  target/seleniumdocker.jar seleniumdocker.jar
 # ADD  target/seleniumdocker-tests.jar seleniumdocker-tests.jar
