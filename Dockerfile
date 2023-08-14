@@ -13,7 +13,7 @@ WORKDIR /usr/share/tag
 # ADD    target/seleniumdocker.jar seleniumdocker.jar
 # ADD   target/seleniumdocker-tests.jar seleniumdocker-tests.jar
 # ADD   target/libs libs
-ADD --from=build /usr/src/app/target/seleniumdocker.jar seleniumdocker.jar
+COPY --from=build /usr/src/app/target/seleniumdocker.jar seleniumdocker.jar
 # COPY --from=build /usr/src/app/target/seleniumdocker-tests.jar seleniumdocker-tests.jar
 # COPY --from=build /usr/src/app/target/libs libs
 COPY /usr/src/app/target/ .
