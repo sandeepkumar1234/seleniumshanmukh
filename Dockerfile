@@ -10,9 +10,9 @@ FROM openjdk:8-jre-slim
 WORKDIR /usr/share/tag
 
 # COPY --from=build /usr/src/app/.  /usr/share/tag/
-ADD   /usr/src/app/target/seleniumdocker.jar seleniumdocker.jar
-ADD  /usr/src/app/target/seleniumdocker-tests.jar seleniumdocker-tests.jar
-ADD  /usr/src/app/target/libs libs
+ADD    target/seleniumdocker.jar seleniumdocker.jar
+ADD   target/seleniumdocker-tests.jar seleniumdocker-tests.jar
+ADD   target/libs libs
 # Add the project jar & copy dependencies
 # ADD  target/seleniumdocker.jar seleniumdocker.jar
 # ADD  target/seleniumdocker-tests.jar seleniumdocker-tests.jar
@@ -22,6 +22,13 @@ ADD testng.xml testng.xml
 
 COPY  src/test/resources/application.properties src/test/resources/application.properties
 
+
+RUN mkdir seleniumdockerreports
+
+ENTRYPOINT java -cp seleniumdocker.jar:seleniumdocker-tests.jar:libs/* -DseleniumHubHost=selenium-hub -Dbrowser=chrome org.testng.TestNG testng.xml
+
+CMD cp -R /test-output/emailable-report.html seleniumdockerreports
+
 #ADD  application.properties
 # Command line to execute the test
 # Expects below ennvironment variables
@@ -29,6 +36,6 @@ COPY  src/test/resources/application.properties src/test/resources/application.p
 # MODULE  = order-module / search-module
 # GRIDHOST = selenium hub hostname / ipaddress
 
-ENTRYPOINT java -cp seleniumdocker.jar:seleniumdocker-tests.jar:libs/* -DseleniumHubHost=selenium-hub -Dbrowser=chrome org.testng.TestNG testng.xml
+# ENTRYPOINT java -cp seleniumdocker.jar:seleniumdocker-tests.jar:libs/* -DseleniumHubHost=selenium-hub -Dbrowser=chrome org.testng.TestNG testng.xml
 
-CMD cp -R /test-output/emailable-report.html D:\\seleniumdockerreports
+# CMD cp -R /test-output/emailable-report.html D:\\seleniumdockerreports
