@@ -1,4 +1,4 @@
-FROM maven:3.8.6-jdk-8 AS build
+FROM maven:3.6.3-jdk-8 AS build
 COPY . /usr/src/app
 COPY pom.xml /usr/src/app
 RUN mvn  -f /usr/src/app/pom.xml  clean install -DskipTests=true
