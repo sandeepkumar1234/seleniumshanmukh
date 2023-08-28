@@ -18,7 +18,7 @@ public class SampleConnectGrid {
   public void f() throws MalformedURLException {
 	  DesiredCapabilities capabilities=DesiredCapabilities.chrome();
 	  capabilities.setPlatform(Platform.LINUX);
-	 driver=new RemoteWebDriver(new URL("http://selenium.engazewell.com/wd/hub"), capabilities);
+	 driver=new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities);
 	  System.out.println("driver connected.............");
 	  driver.navigate().to(PropertiesUtility.properties.getProperty("google.url"));
 	  String title = driver.getTitle();
